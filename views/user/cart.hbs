@@ -1,0 +1,62 @@
+<body onload="getTotalAmount()">
+
+
+    <section>
+        <div>{{#if cartProd}}
+            <table class="table table-light mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Item</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Price</th>
+
+                        <th scope="col">Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {{#each cartProd}}
+                        <th scope="row">{{@index}}{{1}}</th>
+
+                        <td><img style="height: 50px; width: 50px;" src="/images/products/{{this.product._id}}_.jpg"
+                                alt=""></td>
+                        <td>{{this.product.pname}}</td>
+                        <td id="price-{{this.product._id}}">{{this.amount}}</td>
+
+                        <td>
+                            <div><button id="minus-btn{{this.product._id}}"
+                                    onclick="changeQuantity('{{this.product._id}}',-1,{{this.product.price}})"
+                                    class="minus-btn cart-count-btn  me-2">-</button>
+                                <p id="{{this.product._id}}">{{this.quantity}}</p> <button
+                                    id="plus-btn{{this.product._id}}" onclick="changeQuantity('{{this.product._id}}',1,{{this.product.price}})"
+                                    class="plus-btn text-center cart-count-btn ms-4">+</button>
+                            </div>
+                        </td>
+
+                        <td>
+                            <a onclick="return confirm('Are you Sure?')" href="/remove-from-cart/{{this.product._id}}"><button
+                                    class="btn btn-danger">Remove</button></a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <div class="container">
+            <div class="d-flex flex-column float-end">
+                <div class="mt-3 me-4">
+                    <h3  class="">Total : <span id="tot" ></span></h3>
+                </div>
+
+                <div class="mt-3 d-flex justify-content-end "> <a href="/place-order"><button id="place-order" class="btn btn-success me-4 "> Place
+                            Order</button></a></div>
+
+            </div>
+
+{{else}} <div id="no-cart"><h3>Cart is empty</h3></div>
+{{/if}}
+        </div>
+    </section>
+</body>

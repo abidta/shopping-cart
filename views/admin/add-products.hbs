@@ -1,0 +1,35 @@
+<section>
+    <div class="container">
+        <form method="post" id="registration" action="/admin/add-products" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="pname">Product Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="pname" name="pname" placeholder="Enter Product Name" value="" required>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="price" name="price" placeholder="Enter price value" value="" required>
+                </div>
+                <div class="form-group">
+                    <label for="lname">Description<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="description" name="description" placeholder="Enter Description" value="" required>
+                </div>
+                <div class="form-group">
+                    <label for="lname">Category<span class="text-danger">*</span></label>
+                   <select  class="form-control" name="category" id="" required>
+                    <option value="">Select category</option>
+                    <option value="mobile">Mobile</option>
+                    <option value="other">Other</option>
+                   </select>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image<span class="text-danger">*</span></label>
+                    <input type="file" class="form-control" name="image" id="image" placeholder="Enter your email id" value="" required>
+                </div>
+                
+                <div class="form-group mt-4">
+                    <input type="submit" value="Add Product" class="btn btn-info btn-block">
+                </div>
+               
+            </form>
+    </div>
+</section>

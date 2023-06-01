@@ -1,0 +1,46 @@
+
+<section>
+    <div class="container">
+        <div class="ms-auto">
+                       <a href="/admin/add-products" class="ms-auto btn btn-success">Add product</a>
+
+        </div>
+
+        <table id="pro-table" class="table table-light mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {{#each products}}
+                    <th scope="row">{{@index}}</th>
+                    <td>{{this.pname}}</td>
+                    <td>{{this.price}}</td>
+                    <td>{{this.category}}</td>
+                    <td>{{this.description}}</td>
+                    <td><img style="height: 50px; width: 50px;" src="/images/products/{{this._id}}_.jpg" alt=""></td>
+                    <td>
+                         <a href="/admin/edit-product/{{this._id}}" class="btn btn-primary">Edit</a>
+                         <a href="/admin/delete-product?id={{this._id}}&name=abid" class="btn btn-danger" onclick="return confirm('Are You sure delete {{this.pname}}')">Delete</a>
+                    </td>
+                    
+                </tr>
+                {{/each}}
+
+            </tbody>
+        </table>
+    </div>
+</section>
+<script>
+    $(function(){
+        $('#pro-table').DataTable()
+    })
+</script>

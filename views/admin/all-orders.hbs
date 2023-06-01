@@ -1,0 +1,43 @@
+<section>
+    <div class="container">
+          <div>{{#if orderList}}
+            <table id="order-table" class="table table-light mb-5 mt-5">
+                <thead>
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col"> user</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                         <th scope="col">method</th>
+                        <th scope="col">Status</th>
+                         <th scope="col">Date</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each orderList}}
+                    <tr>
+                        
+                        <td></td>
+                        <td><a href="/admin/user-info/?id={{this.user._id}}">{{this.user.name}}</a></td>
+                        <td><a href="/admin/view-product?prodId={{this.product._id}}">{{this.product.pname}}</a></td>
+                        <td >{{this.grandTotal}}</td>
+                        <td>{{this.method}}</td>
+                        <td>{{this.orderStatus}}</td>
+                        <td>{{this.date}}</td>
+                       
+                        
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            {{/if}}
+        </div>
+    </div>
+</section>
+<script>
+    $(function(){
+        $('#order-table').DataTable()
+    })
+</script>

@@ -1,0 +1,59 @@
+<style>
+    .order-list{
+        background: #f1f3f6; 
+        border: 1px solid #dbdbdb;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        
+         cursor: pointer;
+            
+  transition: 0.3s;
+  
+    }
+    .order-list:hover{
+         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  
+    }
+</style>
+
+<section>
+    <div class="container">
+        {{#if order}}
+        {{#each order}}
+        <div class="row p-2 ms-5 mt-3 order-list">
+            
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-3"><img src="/images/products/{{this.product._id}}_.jpg" alt="" style="height: 75px; width: 75px;"></div>
+                    <div class="col-md-9"> <h4>{{this.product.pname}}</h4>
+                        <div class="row"><p>quantity : {{this.quantity}}</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-3"><h5>₹ {{this.product.price}}</h5></div>
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-md-6">{{this.date}}</div>
+                            <div class="col-md-6"><a onclick="return confirm('Are you sure ?')" href="/cancel-order/?orderId={{this._id}}&prodId={{this.product._id}}" class="btn btn-primary">Cancel Order</a></div>
+                        </div>
+                        
+                        <div class="row mt-2"> 
+                            <div class="col-md-6">Order: {{this.orderStatus}}</div>
+                            <div class="col-md-6">Payment :  {{this.payment}} </div> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {{/each}}
+        {{else}}
+        <h2>No orders</h2>
+        {{/if}}
+    </div>
+</section>
+<script>
+function cancelOrder(a,b){
+console.log(a)
+}
+</script>

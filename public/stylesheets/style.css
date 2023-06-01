@@ -1,0 +1,31 @@
+.cart-count-btn{
+    border-radius: 50%;
+    border:solid 1px;
+    height: 28px;
+    width: 28px;
+    font-size: 16px;
+    padding-bottom: 1px;
+}
+.cart-count-btn:hover{
+    background-color: rgb(207, 207, 226);
+}
+.cart-count-btn:active{
+    background-color: rgb(83, 85, 85);
+}
+button:disabled:hover{
+    background: local;
+}
+td p{
+    display: inline !important;
+    position: absolute;
+    
+}
+/* table {
+    counter-reset: row-num;
+} */
+table tr {
+    counter-increment: row-num;
+  }
+  table tr td:first-child::before {
+      content: counter(row-num) ". ";
+  }
