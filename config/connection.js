@@ -6,7 +6,7 @@ const state = {
 
 module.exports.connect = function (done) {
   const url = process.env.MONGO_URI;
-  const dbname = "shoppingCart";
+  const dbname =process.env.DB_NAME;
   mongoClient
     .connect(url)
     .then((client) => {
