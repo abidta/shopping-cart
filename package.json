@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "create-admin": "node ./utils/createAdmin.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -23,7 +25,8 @@
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-google-oidc": "^0.1.0",
-    "stripe": "^11.11.0"
+    "stripe": "^11.11.0",
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"

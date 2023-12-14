@@ -99,9 +99,9 @@
                         <a class="btn btn-success mb-2"> Saved Addresses</a>
                     </div>
                     {{/if}}
-                    <div id="add-address" hidden><a id="" class="btn btn-primary" >+add address</a></div>
+                    <div id="add-address" hidden><a id="" class="btn btn-primary">+add address</a></div>
 
-                    
+
 
                     <div id="new-address">
                         <div>
@@ -138,7 +138,8 @@
                             </div>
                         </div>
                         <div><input id="save-address-checkbox" type="checkbox" name="addressSave"> Save This Address
-                        <br> <p id="warn-address" class="text-danger"></p>
+                            <br>
+                            <p id="warn-address" class="text-danger"></p>
                         </div>
 
 
@@ -171,7 +172,8 @@
                         </div>
                     </div>
                     <div class="row mt-4 justify-content-end">
-                        <div class="col-4"><input id="checkout" class="btn btn-primary mb-2" type="submit" value="Checkout">
+                        <div class="col-4"><input id="checkout" class="btn btn-primary mb-2" type="submit"
+                                value="Checkout">
                         </div>
                     </div>
 
@@ -245,61 +247,61 @@
     }
     document.getElementById("save-address-checkbox").addEventListener('change', (e) => {
         if (document.getElementById("save-address-checkbox").checked) {
-           let userId= document.getElementById("userId").value
+            let userId = document.getElementById("userId").value
             console.log(userId)
-            
-                console.log("AS")
-                fetch("/address-count", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Accept: "application/json"
-                    },
-                    body: JSON.stringify({
-                        userId:userId
-                    })
-                }).then((res) => res.json())
-                    .then((data) => {
-                         console.log(data)
-                       if(data>=3){
+
+            console.log("AS")
+            fetch("/address-count", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                },
+                body: JSON.stringify({
+                    userId: userId
+                })
+            }).then((res) => res.json())
+                .then((data) => {
+                    console.log(data)
+                    if (data >= 3) {
                         console.log("kl")
-                            document.getElementById("warn-address").innerHTML="only 3 address can save";
-                            document.getElementById("save-address-checkbox").checked=false
-                            document.getElementById("save-address-checkbox").disabled=true
-                       }
-                    }).catch((err)=>{
-                        console.log(err)
-                        alert(err.message)
-                    })
-            
-         
-         
+                        document.getElementById("warn-address").innerHTML = "only 3 address can save";
+                        document.getElementById("save-address-checkbox").checked = false
+                        document.getElementById("save-address-checkbox").disabled = true
+                    }
+                }).catch((err) => {
+                    console.log(err)
+                    alert(err.message)
+                })
+
+
+
         }
     })
-    document.getElementById("form-check").addEventListener('submit',(e)=>{
-  e.preventDefault()
-  console.log(e.target);
-  data= new FormData(document.getElementById("form-check"))
-  console.log(data);
-  fetch("/place-order",{
-    method:"POST",
-    headers:{
-      Accept: "application/json"
-    },
-   
-    body: data
-  }).then((res)=>res.json()).then((data)=>{
-    if (data==='online') {
-     console.log(data);
-      location.href= "/checkout"
-    }
-    else{
-       var modal = document.getElementById("myModal");
-      modal.style.display = "block";
-    }
-  })
+    document.getElementById("form-check").addEventListener('submit', (e) => {
+        e.preventDefault()
+        console.log(e.target);
+        data = new FormData(document.getElementById("form-check"))
+        console.log(data);
+        fetch("/place-order", {
+            method: "POST",
+            headers: {
+                Accept: "application/json"
+            },
 
-})
+            body: data
+        }).then((res) => res.json()).then((data) => {
+            if (data === 'online') {
+                console.log(data);
+                location.href = "/checkout"
+            }
+            else {
+                var modal = document.getElementById("myModal");
+                modal.style.display = "block";
+            }
+        })
+
+    })
 
 </script>
 {{/if}}
